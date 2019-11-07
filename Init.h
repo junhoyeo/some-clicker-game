@@ -16,6 +16,22 @@ inline void updateHandles() {
 	WINDOW_HANDLE = GetConsoleWindow();
 }
 
+inline void hideConsoleCursor() {
+	CONSOLE_CURSOR_INFO cursorInfo;
+	cursorInfo.dwSize = 100;
+	cursorInfo.bVisible = FALSE;
+	SetConsoleCursorInfo(CONSOLE_OUTPUT, &cursorInfo);
+}
+
+inline void disableConsoleSelection() {
+	DWORD prevConsoleMode;
+	GetConsoleMode(CONSOLE_INPUT, &prevConsoleMode);
+	SetConsoleMode(
+		CONSOLE_INPUT,
+		ENABLE_EXTENDED_FLAGS | (prevConsoleMode & ~ENABLE_QUICK_EDIT_MODE)
+	);
+}
+
 inline void resizeConsole(int height, int width) {
 	char command[100];
 	sprintf_s(command, 100, "mode con cols=%d lines=%d", width, height);
@@ -29,6 +45,8 @@ inline void updateColor(int fontColor, int bgColor) {
 
 inline void initWindow() {
 	updateHandles();
+	hideConsoleCursor();
+	disableConsoleSelection();
 	resizeConsole(SCREEN_HEIGHT, SCREEN_WIDTH);
 	updateColor(0, 15);
 	system("cls");
