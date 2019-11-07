@@ -7,6 +7,9 @@
 ### hideConsoleCursor
 콘솔 커서를 숨깁니다.
 
+### disableConsoleResize
+사용자가 직접 콘솔 윈도우 크기를 변경하지 못하도록 합니다.
+
 ### disableConsoleSelection
 Quick Edit mode를 비활성화해서, 클릭해도 텍스트가 선택되지 않도록 합니다.
 

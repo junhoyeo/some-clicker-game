@@ -14,10 +14,12 @@ int main() {
 
 	Mouse mouse = createMouse();
 
+	printf("w: %3d, h: %3d\n", WINDOW_WIDTH, WINDOW_HEIGHT);
+
 	while(1) {
-		gotoxy(0, 0);
+		gotoxy(0, 1);
 		mouse.updatePosition(&mouse);
-		printf("x: %d, y: %d\n", mouse.x, mouse.y);
+		printf("x: %3d, y: %3d\n", mouse.x, mouse.y);
 		Sleep(50);
 	}
 }

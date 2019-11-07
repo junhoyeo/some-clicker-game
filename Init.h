@@ -23,6 +23,11 @@ inline void hideConsoleCursor() {
 	SetConsoleCursorInfo(CONSOLE_OUTPUT, &cursorInfo);
 }
 
+inline void disableConsoleResize() {
+	LONG windowLong = GetWindowLong(WINDOW_HANDLE, GWL_STYLE);
+	SetWindowLong(WINDOW_HANDLE, GWL_STYLE, windowLong & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
+}
+
 inline void disableConsoleSelection() {
 	DWORD prevConsoleMode;
 	GetConsoleMode(CONSOLE_INPUT, &prevConsoleMode);
@@ -46,6 +51,7 @@ inline void updateColor(int fontColor, int bgColor) {
 inline void initWindow() {
 	updateHandles();
 	hideConsoleCursor();
+	disableConsoleResize();
 	disableConsoleSelection();
 	resizeConsole(SCREEN_HEIGHT, SCREEN_WIDTH);
 	updateColor(0, 15);
