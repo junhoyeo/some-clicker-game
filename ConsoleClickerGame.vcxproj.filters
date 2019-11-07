@@ -23,5 +23,8 @@
     <ClInclude Include="Init.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
