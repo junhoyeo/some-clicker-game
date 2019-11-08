@@ -13,7 +13,7 @@ COLORREF hexToColor(int hex) {
 
 void setPixel(int x, int y, COLORREF color) {
 	HDC context = GetDC(WINDOW_HANDLE);
-	SetPixel(context, x, y, color);
+	SetPixel(context, y, x, color);
 	ReleaseDC(WINDOW_HANDLE, context);
 }
 

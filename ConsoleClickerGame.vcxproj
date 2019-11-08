@@ -126,7 +126,6 @@
     <ClCompile Include="Main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Image.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Init.h" />
     <ClInclude Include="Utils.h" />

@@ -12,6 +12,7 @@
 
 #define SCREEN_HEIGHT 50
 #define SCREEN_WIDTH 60
+#define POINT_OFFSET 80.0
 
 HANDLE CONSOLE_INPUT, CONSOLE_OUTPUT;
 HWND WINDOW_HANDLE;
@@ -57,7 +58,7 @@ inline void updateColor(int fontColor, int bgColor) {
 
 inline void updatePointWidth(int windowWidth) {
 	// get custom point width (small square with pixel)
-	POINT_WIDTH = ceil(windowWidth / 50.0);
+	POINT_WIDTH = ceil(windowWidth / POINT_OFFSET);
 }
 
 inline void initWindow() {
