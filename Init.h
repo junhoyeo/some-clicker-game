@@ -12,11 +12,11 @@
 
 #define SCREEN_HEIGHT 50
 #define SCREEN_WIDTH 60
-#define POINT_OFFSET 80.0
+// #define POINT_OFFSET 80.0
 
 HANDLE CONSOLE_INPUT, CONSOLE_OUTPUT;
 HWND WINDOW_HANDLE;
-int POINT_WIDTH;
+// int POINT_WIDTH;
 
 inline void updateHandles() {
 	CONSOLE_INPUT = GetStdHandle(STD_INPUT_HANDLE);
@@ -56,10 +56,10 @@ inline void updateColor(int fontColor, int bgColor) {
 	SetConsoleTextAttribute(CONSOLE_OUTPUT, color);
 }
 
-inline void updatePointWidth(int windowWidth) {
-	// get custom point width (small square with pixel)
-	POINT_WIDTH = ceil(windowWidth / POINT_OFFSET);
-}
+// inline void updatePointWidth(int windowWidth) {
+// 	// get custom point width (small square with pixel)
+// 	POINT_WIDTH = ceil(windowWidth / POINT_OFFSET);
+// }
 
 inline void initWindow() {
 	updateHandles();
@@ -69,7 +69,7 @@ inline void initWindow() {
 	resizeConsole(SCREEN_HEIGHT, SCREEN_WIDTH);
 	updateColor(0, 15);
 	system("cls");
-	updatePointWidth(WINDOW_WIDTH);
+	// updatePointWidth(WINDOW_WIDTH);
 }
 
 #endif

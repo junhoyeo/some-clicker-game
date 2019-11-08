@@ -10,7 +10,6 @@
 #include "Utils.h"
 #include "Draw.h"
 #include "Resources.h"
-#include "BitmapLoader/BitmapLoader.h"
 
 Mouse createMouse() {
 	Mouse mouse = MOUSE;
@@ -23,34 +22,12 @@ int main() {
 
 	Mouse mouse = createMouse();
 
-	// int height, width;
-	// readBMP(TEST_IMAGE, width, height);
-	// printf("iw: %d, ih: %d\n", width, height);
-
 	printf("w: %3d, h: %3d\n", WINDOW_WIDTH, WINDOW_HEIGHT);
-	// setPoint(0, 0, hexToColor(0x7F00FF));
-	// setPoint(0, 1, hexToColor(0x0000FF));
 
-	// for(int h = 0; h < 10; h++) {
-	// 	for(int w = 0; w < 10; w++)
-	// 		setPixel(10 + h, 100 + w, hexToColor(0x7F00FF));
-	// }
-
-	// while(1) {
-	//	gotoxy(0, 1);
-	// 	mouse.updatePosition(&mouse);
-	// 	printf("x: %3d, y: %3d\n", mouse.x, mouse.y);
-	// 	Sleep(50);
-	// }
-
-	Bitmap testBmp = DEFAULT_BITMAP;
-	if(testBmp.initialize(&testBmp, TEST_IMAGE)) {
-		for (int y = 0; y < testBmp.height; y++) {
-			for (int x = 0; x < testBmp.width; x++) {
-				setPoint((testBmp.width - x), (testBmp.height - y), testBmp.getPixel(&testBmp, x, y));
-			}
-		}
-		testBmp.terminate(&testBmp);
+	while(1) {
+		gotoxy(0, 1);
+		mouse.updatePosition(&mouse);
+		printf("x: %3d, y: %3d\n", mouse.x, mouse.y);
+		Sleep(50);
 	}
-	getchar();
 }
