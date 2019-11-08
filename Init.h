@@ -5,14 +5,17 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <conio.h>
 #include <Windows.h>
+#include "Utils.h"
 
 #define SCREEN_HEIGHT 50
 #define SCREEN_WIDTH 60
 
 HANDLE CONSOLE_INPUT, CONSOLE_OUTPUT;
 HWND WINDOW_HANDLE;
+int POINT_WIDTH;
 
 inline void updateHandles() {
 	CONSOLE_INPUT = GetStdHandle(STD_INPUT_HANDLE);
@@ -52,6 +55,11 @@ inline void updateColor(int fontColor, int bgColor) {
 	SetConsoleTextAttribute(CONSOLE_OUTPUT, color);
 }
 
+inline void updatePointWidth(int windowWidth) {
+	// get custom point width (small square with pixel)
+	POINT_WIDTH = ceil(windowWidth / 50.0);
+}
+
 inline void initWindow() {
 	updateHandles();
 	hideConsoleCursor();
@@ -60,6 +68,7 @@ inline void initWindow() {
 	resizeConsole(SCREEN_HEIGHT, SCREEN_WIDTH);
 	updateColor(0, 15);
 	system("cls");
+	updatePointWidth(WINDOW_WIDTH);
 }
 
 #endif
