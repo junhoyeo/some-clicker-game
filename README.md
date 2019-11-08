@@ -19,7 +19,7 @@ Quick Edit mode를 비활성화해서, 클릭해도 텍스트가 선택되지 �
 ### updateColor
 `fontColor`와 `bgColor`에 주어진 오프셋을 이용해서 폰트 색과 배경 색을 변경합니다.
 
-## ~~[deprecated] updatePointWidth~~
+### ~~[deprecated] updatePointWidth~~
 [BitmapLoader](./BitmapLoader) 문서를 참고하세요.
 
 ### initWindow
@@ -55,10 +55,10 @@ int main() {
 ## Draw.h
 픽셀 따위를 화면에 그립니다.
 
-## hexToColor
+### hexToColor
 16진수 컬러 코드 `hex`를 받아 `COLORREF`로 변환합니다.
 
-## setPixel
+### setPixel
 `(x, y)`에 `color`의 색을 가진 픽셀을 표시합니다.
 
 ```c
@@ -72,7 +72,7 @@ int main() {
 }
 ```
 
-## ~~[deprecated] setPoint~~
+### ~~[deprecated] setPoint~~
 [BitmapLoader](./BitmapLoader) 문서를 참고하세요.
 
 ## Mouse.h
