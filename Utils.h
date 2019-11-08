@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef _UTILS_
+#define _UTILS_
+
 #include <Windows.h>
 
 #define WINDOW_HEIGHT 800
@@ -8,3 +12,5 @@ void gotoxy(int x, int y) {
 	COORD pos = { x, y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
+
+#endif

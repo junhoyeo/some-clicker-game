@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef _INIT_
+#define _INIT_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -57,3 +61,5 @@ inline void initWindow() {
 	updateColor(0, 15);
 	system("cls");
 }
+
+#endif

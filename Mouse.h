@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef _MOUSE_
+#define _MOUSE_
+
 #include <stdio.h>
 #include <Windows.h>
 
@@ -19,3 +23,5 @@ const Mouse MOUSE = {
     0, 0,
     _updatePosition,
 };
+
+#endif
