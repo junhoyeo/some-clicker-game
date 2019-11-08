@@ -24,6 +24,9 @@ int main() {
 
 	printf("w: %3d, h: %3d\n", WINDOW_WIDTH, WINDOW_HEIGHT);
 
+	HBITMAP testBmp = loadImage(TEST_IMAGE);
+	drawImage(WINDOW_WIDTH / 2 - 35, WINDOW_HEIGHT / 2 - 32, testBmp, 70, 65);
+
 	while(1) {
 		gotoxy(0, 1);
 		mouse.updatePosition(&mouse);

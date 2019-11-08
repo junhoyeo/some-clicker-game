@@ -27,3 +27,34 @@ void setPixel(int x, int y, COLORREF color) {
 // 		}
 // 	}
 // }
+
+HBITMAP loadImage(const char* filePath) {
+	return (HBITMAP)LoadImage(NULL, filePath, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+}
+
+void loadBMP(HDC context, HDC memdc, HBITMAP image) {
+   BITMAP bitmap;
+   HDC bitmapDC = CreateCompatibleDC(context);
+
+   GetObject(image, sizeof(bitmap), &bitmap);
+   SelectObject(bitmapDC, image);
+   BitBlt(memdc, 0, 0, bitmap.bmWidth, bitmap.bmHeight, bitmapDC, 0, 0, SRCCOPY);
+
+   DeleteDC(bitmapDC);
+}
+
+void drawImage(int x, int y, HBITMAP image, int height, int width) {
+	HDC context = GetDC(WINDOW_HANDLE);
+	HDC memdc = CreateCompatibleDC(context);
+	HBITMAP bitmap = CreateCompatibleBitmap(context, width, height);
+
+	SelectObject(memdc, bitmap);
+
+	loadBMP(context, memdc, image);
+
+	StretchBlt(context, x, y, width, height, memdc, 0, 0, width, height, SRCCOPY);
+
+	DeleteDC(memdc);
+	DeleteObject(bitmap);
+	ReleaseDC(WINDOW_HANDLE, context);
+}

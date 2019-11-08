@@ -16,12 +16,23 @@
 
 HANDLE CONSOLE_INPUT, CONSOLE_OUTPUT;
 HWND WINDOW_HANDLE;
+int DPI_HANDLE;
+
 // int POINT_WIDTH;
 
 inline void updateHandles() {
 	CONSOLE_INPUT = GetStdHandle(STD_INPUT_HANDLE);
 	CONSOLE_OUTPUT = GetStdHandle(STD_OUTPUT_HANDLE);
 	WINDOW_HANDLE = GetConsoleWindow();
+}
+
+inline void updateDpiHandle() {
+	HANDLE user32 = GetModuleHandle(TEXT("user32"));
+	FARPROC func = GetProcAddress(user32, "GetDpiForWindow");
+	if (func == NULL)
+		DPI_HANDLE = 96;
+	else
+		DPI_HANDLE = ((UINT(__stdcall*)(HWND))func)(WINDOW_HANDLE);
 }
 
 inline void hideConsoleCursor() {
@@ -63,6 +74,7 @@ inline void updateColor(int fontColor, int bgColor) {
 
 inline void initWindow() {
 	updateHandles();
+	updateDpiHandle();
 	hideConsoleCursor();
 	disableConsoleResize();
 	disableConsoleSelection();
