@@ -25,6 +25,11 @@ void setPixel(int x, int y, COLORREF color) {
 	ReleaseDC(WINDOW_HANDLE, context);
 }
 
+void renderRect(HDC context, HBRUSH brush, int x, int y, int height, int width) {
+	RECT rect = {x, y, x + width, y + height};
+	FillRect(context, &rect, brush);
+}
+
 // void setPoint(int gridX, int gridY, COLORREF color) {
 // 	int rowStart = gridX * POINT_WIDTH;
 // 	int colStart = gridY * POINT_WIDTH;

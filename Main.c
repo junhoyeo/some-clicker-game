@@ -10,7 +10,7 @@
 #include "Utils.h"
 #include "Draw.h"
 #include "Resources.h"
-#include "GradientGenerator/GradientGenerator.h"
+#include "GradientLoader/GradientLoader.h"
 
 Mouse createMouse() {
 	Mouse mouse = MOUSE;
@@ -25,14 +25,11 @@ int main() {
 
 	printf("w: %3d, h: %3d\n", WINDOW_WIDTH, WINDOW_HEIGHT);
 
+	GradientLoad testGradient = createGradientLoader(hexToColor(0x84FAB0), hexToColor(0x8FD3F4));
+	testGradient.render(&testGradient, 0, 0, WINDOW_HEIGHT, WINDOW_WIDTH, 25);
+
 	HBITMAP testBmp = loadImage(TEST_IMAGE);
 	drawImage(WINDOW_WIDTH / 2 - 35, WINDOW_HEIGHT / 2 - 32, testBmp, 70, 65);
-
-	gotoxy(0, 5);
-	Gradient testGradient = createGradient(hexToColor(0x84FAB0), hexToColor(0x8FD3F4));
-	testGradient.getColors(&testGradient, 15);
-	for(int i = 0; i < 15; i++)
-		printColor(testGradient.colors[i]);
 
 	while(1) {
 		gotoxy(0, 1);
