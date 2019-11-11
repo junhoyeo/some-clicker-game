@@ -10,11 +10,21 @@
 #include "Utils.h"
 #include "Draw.h"
 #include "Resources.h"
+#include "GradientGenerator/GradientGenerator.h"
 
 Mouse createMouse() {
 	Mouse mouse = MOUSE;
 	mouse.updatePosition(&mouse);
 	return mouse;
+}
+
+Gradient createGradient(COLORREF startColor, COLORREF endColor) {
+	Gradient gradient;
+	gradient.startColor = startColor;
+	gradient.endColor = endColor;
+	gradient.colors = NULL;
+	gradient.getColors = _gradient_getColors;
+	return gradient;
 }
 
 int main() {
@@ -26,6 +36,12 @@ int main() {
 
 	HBITMAP testBmp = loadImage(TEST_IMAGE);
 	drawImage(WINDOW_WIDTH / 2 - 35, WINDOW_HEIGHT / 2 - 32, testBmp, 70, 65);
+
+	gotoxy(0, 5);
+	Gradient testGradient = createGradient(hexToColor(0x84FAB0), hexToColor(0x8FD3F4));
+	testGradient.getColors(&testGradient, 15);
+	for(int i = 0; i < 15; i++)
+		printColor(testGradient.colors[i]);
 
 	while(1) {
 		gotoxy(0, 1);

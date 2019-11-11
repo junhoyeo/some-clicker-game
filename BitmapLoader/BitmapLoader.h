@@ -6,7 +6,7 @@
 #include "BitmapLoaderIntf.h"
 #include "BitmapLoaderImpl.h"
 
-Bitmap DEFAULT_BITMAP = {
+const Bitmap DEFAULT_BITMAP = {
   0, 0,
   NULL,
   _bitmap_initialize,

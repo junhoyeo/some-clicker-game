@@ -4,11 +4,19 @@
 #include <math.h>
 #include <Windows.h>
 
+#define GetRValue(rgb) ((BYTE)(rgb))
+#define GetGValue(rgb) ((BYTE)(((WORD)(rgb)) >> 8))
+#define GetBValue(rgb) ((BYTE)((rgb) >> 16))
+
 COLORREF hexToColor(int hex) {
 	int red = hex / 0x10000;
 	int green = (hex / 0x100) % 0x100;
 	int blue = hex % 0x100;
 	return RGB(red, green, blue);
+}
+
+void printColor(COLORREF color) {
+  printf("(r: %02d, g: %02d, b: %02d)\n", GetRValue(color), GetGValue(color), GetBValue(color));
 }
 
 void setPixel(int x, int y, COLORREF color) {
