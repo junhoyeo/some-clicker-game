@@ -9,7 +9,7 @@ typedef struct _Gradient {
   COLORREF startColor, endColor;
 	COLORREF* colors;
 
-	void (*initialize)(struct _Gradient*, COLORREF, COLORREF);
+	// void (*initialize)(struct _Gradient*, COLORREF, COLORREF);
 	void (*getColors)(struct _Gradient*, int);
 } Gradient;
 

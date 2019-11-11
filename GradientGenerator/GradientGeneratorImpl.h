@@ -1,12 +1,15 @@
 #pragma once
 
+#ifndef _GRADIENT_GENERATOR_IMPL_
+#define _GRADIENT_GENERATOR_IMPL_
+
 #include <Windows.h>
 #include "GradientGeneratorIntf.h"
 
-void _gradient_initialize(Gradient* self, COLORREF startColor, COLORREF endColor) {
-  self->startColor = startColor;
-  self->endColor = endColor;
-}
+// void _gradient_initialize(Gradient* self, COLORREF startColor, COLORREF endColor) {
+//   self->startColor = startColor;
+//   self->endColor = endColor;
+// }
 
 void _gradient_getColors(Gradient* self, int size) {
   self->colors = malloc(size);
@@ -30,3 +33,5 @@ void _gradient_getColors(Gradient* self, int size) {
     self->colors[i] = RGB(red, green, blue);
   }
 }
+
+#endif
